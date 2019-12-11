@@ -1,0 +1,22 @@
+<%- include('Header') %>
+
+        <div id = 'container'><br>
+            <form id = 'thc_prompt' method ='post' enctype='multipart/form-data'>
+                <div id ='header'>
+                    <a>THC Number</a>
+                    <button formaction ='/home' id='goBack'>Back</button>
+                </div><br>
+                <div id = 'form_body'>
+                Enter THC#:<br>
+                <input type='text' name ='thc_num'>
+                <% if (option == 1) { %>
+                    <button type ='submit' formaction= '/newvisit'>Enter</button>
+                <% } %>
+                <% if (option == 3) { %>
+                    <button type ='submit' formaction= '/editvisit'>Enter</button>
+                <% } %>
+            </div>
+            </form>
+        </div>
+    </body>
+</html>

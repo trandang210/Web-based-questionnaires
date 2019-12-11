@@ -1,0 +1,59 @@
+<%- include('Header') %>
+        <br><form id = 'edit_visit' method ='post' enctype='multipart/form-data'>
+            <div id ='header'>
+                <a>View/Edit Visit</a>
+                <button formaction ='/home' id='goBack'>Back</button>
+            </div><br>
+            <div id='form_body'>
+            Sort By:<br>
+                <input type='radio' name ='sort' value ='visitid'checked>Visit ID
+                <input type='radio' name ='sort' value ='date'>Date
+            <button formaction = '/sortresult'>Go</button>
+        </div>
+        </form>
+        <div name ='result_table'>
+            <table id ='lookup_result'>
+                <thead id = 'header'>
+                    <tr id='row_name'>
+                        <th scope ='col'>Selection</th>
+                        <th scope ='col'>Visit ID</th>
+                        <th scope ='col'>THC</th>
+                        <th scope ='col'>Sequence Number</th>
+                        <th scope ='col'>Date</th>
+                        <th scope ='col'>Prob</th>
+                        <th scope ='col'>Comments</th>
+                        <th scope ='col'>Category</th>
+                        <th scope ='col'>Protocol</th>
+                        <th scope ='col'>Instrument</th>
+                        <th scope ='col'>REM</th>
+                       <th scope ='col'>Follow Up</th>
+                        <th scope ='col'>Next Visit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% visits.forEach((visit, index) =>{ %>
+                    <tr>
+                        <td>
+                            <form method ='post' enctype='multipart/form-data'>
+                                <button formaction= '/currentvisit' name='current_visit' value ='<%= visit.PATIENT_THC %>'>Edit</button>
+                            </form>
+                        </td>
+                        <td> <%= visit.VISIT_ID %></td>
+                        <td> <%= visit.PATIENT_THC %></td>
+                         <td> <%= visit.Visit_sequence_number %></td>
+                        <td> <%= visit.Visit_Date %></td>
+                        <td> <%= visit.Problem_Type %></td>
+                        <td> <%= visit.Comment_text %></td>
+                        <td> <%= visit.Category %></td>
+                        <td> <%= visit.Protocol %></td>
+                        <td> <%= visit.Instrument %></td>
+                        <td> <%= visit.REM %></td>
+                        <td> <%= visit.Follow_up %></td>
+                        <td> <%= visit.Next_Visit%></td>                                    
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

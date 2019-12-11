@@ -1,0 +1,31 @@
+<%- include('Header') %>
+<div id = 'container'>
+    <form id = 'thi' method ='post' enctype='multipart/form-data'>
+        <div id ='header'>
+            <p>TFI Interview</p>
+            <button><a href ='/' id='goBack'>Back</a></button>
+        </div><br>
+        
+            <% questions.forEach((question, index) =>{ %>
+            Question <%= question.Num %>: <%= question.Content %>
+            <br>
+            <input type='radio' name =<%= question.Num %> value = 0 > 0
+            <input type='radio' name =<%= question.Num %> value = 1 > 1
+            <input type='radio' name =<%= question.Num %> value = 2 > 2
+            <input type='radio' name =<%= question.Num %> value = 3 > 3
+            <input type='radio' name =<%= question.Num %> value = 4 > 4
+            <input type='radio' name =<%= question.Num %> value = 5 > 5
+            <input type='radio' name =<%= question.Num %> value = 6 > 6
+            <input type='radio' name =<%= question.Num %> value = 7 > 7
+            <input type='radio' name =<%= question.Num %> value = 8 > 8
+            <input type='radio' name =<%= question.Num %> value = 9 > 9
+            <input type='radio' name =<%= question.Num %> value = 10 > 10
+            <br>
+            <% }) %>
+        
+    </form>
+    <button type ='submit' formaction = '/save' id='thi_save'>SAVE</button>
+    
+</div>
+</body>
+</html>

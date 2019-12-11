@@ -1,0 +1,48 @@
+<%- include('Header') %>
+            <div id = 'container'><br>
+                    <form id = 'tfi_result' method ='post' enctype='multipart/form-data'>
+                    <div id ='header'>
+                        <a>TFI Result</a>
+                        <button formaction ='/home' id='goBack'>Back</button>
+                    </div><br>
+                    <div id ='form_body'>
+                    <%if (visit) { %>
+                        Visit ID:
+                        <input type ='text' id ='visitid'name = 'visitid' value = '<%= visit.VISIT_ID %>'disabled>
+                        Date:
+                        <input type ='text' id ='date'name = 'visitdate_val' value = '<%= visit.Visit_Date %>'disabled >
+                        <br>Patient:
+                        <input type ='text' id ='name'name = 'patient_name' value = '<%= visit.First_name %>  <%= visit.Last_name %>'disabled >
+                        THC #: 
+                        <input type ='text' id ='thcnumber'name = 'patient_thc' value = '<%= visit.PATIENT_THC %>'disabled>
+                        Visit no.
+                        <input type ='text' id ='visitno'name = 'visit_seq' value = '<%= visit.Visit_sequence_number %>'disabled>
+                    <% }else { %>  
+                        <p>Not Found!</p>
+                    <% } %>
+                    <br><br>
+
+                        <% scores.forEach((score, index) =>{ %>
+                            
+                         Total INTRUSIVE score: <%= score.Sc_I%> <br>
+                         Total SENSE OF CONTROL score: <%= score.Sc_SC%> <br>
+                         Total COGNITIVE score: <%= score.Sc_C%> <br>
+                         Total SLEEP score: <%= score.Sc_SL%> <br>
+                         Total AUDITORY score: <%= score.Sc_A%> <br>
+                         Total RELAXATION score: <%= score.Sc_R%> <br>
+                         Total QUALITY OF LIFE score: <%= score.Sc_Q%> <br>
+                         Total EMOTIONAL score: <%= score.Sc_E%> <br>
+                         Total TFI score: <%= score.Sc_T%>/100 <br>
+                         Number of questions answered:  <%= no_ques %> <br>
+                         Result:  <%= result_detail %> <br>       
+                        <br><br>
+                        <% }) %>
+                        <br><br>
+                        <button type ='submit' formaction = '/tfi_cancel' name = 'visitid_val' value = '<%= visit.VISIT_ID %>' id='tfi_cancel'>CANCEL</button>
+                        <button type ='submit' formaction = '/home'  id='tfi_save'>SAVE</button>
+                    </div>
+                </form>
+                
+            </div>
+            </body>
+            </html>

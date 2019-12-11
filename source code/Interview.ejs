@@ -1,0 +1,30 @@
+<%- include('Header') %>
+<div id = 'container'><br>
+    <form id = 'interview' method ='post' enctype='multipart/form-data'>
+        <div id ='header'>
+            <a>Interview</a>
+            <button formaction ='/home' id='goBack'>Back</button>
+        </div><br>
+        <div id = 'form_body'>
+        <%if (visit) { %>
+            Visit ID:
+            <input type ='text' id ='visitid' name = 'visitid' value = '<%= visit.VISIT_ID %>'disabled>
+            Date:
+            <input type ='text' id ='date'name = 'visitdate_val' value = '<%= visit.Visit_Date %>'disabled >
+            <br><br>Patient:
+            <input type ='text' id ='name'name = 'patient_name' value = '<%= visit.First_name %>  <%= visit.Last_name %>'disabled >
+            THC #: 
+            <input type ='text' id ='thcnumber'name = 'patient_thc' value = '<%= visit.PATIENT_THC %>'disabled>
+            Visit no.
+            <input type ='text' id ='visitno'name = 'visit_seq' value = '<%= visit.Visit_sequence_number %>'disabled>
+        <% }else { %>  
+            <p>Not Found!</p>
+        <% } %><br>
+        <br><button type ='submit' formaction = '/thi' name = 'visitid_val' value = '<%= visit.VISIT_ID %>' id='thi_but'>Tinnitus Hadicap Inventory (THI)</button>
+        <button type ='submit' formaction = '/tfi' name = 'visitid_val' value = '<%= visit.VISIT_ID %>'id='tfi_but'>Tinnitus Functional Index (TFI))</button>
+    </div>
+    </form>
+    
+</div>
+</body>
+</html>

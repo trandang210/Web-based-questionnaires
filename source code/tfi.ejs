@@ -1,0 +1,62 @@
+<%- include('Header') %>
+<div id = 'container'><br>
+    <form id = 'tfi' method ='post' enctype='multipart/form-data'>
+        <div id ='header'>
+            <a>TFI Interview</a>
+            <button formaction ='/home' id='goBack'>Back</button>
+        </div><br>
+        <div class="help">
+                <button class="dropbtn">HELP</button>
+                <div class="popup_help">
+                  <p>Answer the questions based on your condition.
+                    0 to 10 (10 is bad)
+                  </p>
+                </div>
+        </div>
+        <%if (message) { %>
+            ERROR: <%= message %>
+        <% } %>
+        <br><br>
+
+        <div id= 'form_body'>
+        <%if (visit) { %>
+            Visit ID:
+            <input type ='text' id ='visitid'name = 'visitid' value = '<%= visit.VISIT_ID %>'disabled>
+                        Date:
+                        <input type ='text' id ='date'name = 'visitdate_val' value = '<%= visit.Visit_Date %>'disabled >
+                        <br>Patient:
+                        <input type ='text' id ='name'name = 'patient_name' value = '<%= visit.First_name %>  <%= visit.Last_name %>'disabled >
+                        THC #: 
+                        <input type ='text' id ='thcnumber'name = 'patient_thc' value = '<%= visit.PATIENT_THC %>'disabled>
+                        Visit no.
+                        <input type ='text' id ='visitno'name = 'visit_seq' value = '<%= visit.Visit_sequence_number %>'disabled>
+        <% }else { %>  
+            <p>Not Found!</p>
+        <% } %>
+        <br><br>
+            <div id = 'tfi_questionare'>     
+            <% questions.forEach((question, index) =>{ %>
+            Question <%= question.Num %>: <%= question.Content %>
+            <br><br>
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 0 > 0
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 1 > 1
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 2 > 2
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 3 > 3
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 4 > 4
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 5 > 5
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 6 > 6
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 7 > 7
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 8 > 8
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 9 > 9
+            <input type='radio' name =<%= 'q'+ question.Num %> value = 10 > 10
+            <br><br>
+            <% }) %>
+            <button type ='submit' formaction = '/tfi_result' name = 'visitid_val' value = '<%= visit.VISIT_ID %>' id='tfi_save'>SUBMIT</button>
+        </div>  
+        </div>
+        </form>
+    
+    
+</div>
+</body>
+</html>

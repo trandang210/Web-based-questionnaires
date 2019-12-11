@@ -1,0 +1,65 @@
+<%- include('Header') %>
+<div id = 'container'><br>
+    <form id = 'thi' method ='post' enctype='multipart/form-data'>
+        <div id ='header'>
+            <a>THI Interview</a>
+            <button formaction ='/home' id='goBack'>Back</button>
+        </div><br>
+        <div class="help">
+                <button class="dropbtn">HELP</button>
+                <div class="popup_help">
+                  <p>Answer the questions based on your condition.
+                    Score: Yes =4, Sometimes = 2, No=0
+                  </p>
+                </div>
+        </div>
+        <div id ='form_body'>
+        <%if (visit) { %>
+            Visit ID:
+            <input type ='text' id = 'visitid' name = 'visitid' value = '<%= visit.VISIT_ID %>'disabled>
+            Date:
+            <input type ='text' id = 'date'name = 'visitdate_val' value = '<%= visit.Visit_Date %>'disabled >
+            <br>Patient:
+            <input type ='text' id = 'name'name = 'patient_name' value = '<%= visit.First_name %>  <%= visit.Last_name %>'disabled >
+            THC #: 
+            <input type ='text' id = 'thcnumber'name = 'patient_thc' value = '<%= visit.PATIENT_THC %>'disabled>
+            Visit no.
+            <input type ='text' id = 'visitno'name = 'visit_seq' value = '<%= visit.Visit_sequence_number %>'disabled>
+        <% }else { %>  
+            <p>Not Found!</p>
+        <% } %>
+        <br><br>
+        <table id ='thi_questionare'>
+                <thead id = 'header'>
+
+                </thead>
+            <tbody>
+                    <% questions.forEach((question, index) =>{ %>
+            <tr>
+                <td>
+                            Question <%= question.Num %>: 
+                </td>
+                <td>
+                        <%= question.Content %>
+                </td>
+                <td>
+                        <input type='radio' id='thi_option' name =<%= 'q'+ question.Num %> value = 4 checked> Yes
+                </td>
+                <td>
+                        <input type='radio' id='thi_option'name =<%= 'q'+ question.Num %> value = 2 > Sometimes
+                </td>
+                <td>
+                        <input type='radio' id='thi_option'name =<%= 'q'+ question.Num %> value = 0 > No
+                </td>
+            </tr>
+           <% }) %>
+        </tbody>
+        </table><br>
+        <button type ='submit' formaction = '/thi_result' name = 'visitid_val' value = '<%= visit.VISIT_ID %>' id='thi_save'>SUBMIT</button>   
+    </div>
+    </form>
+    
+    
+</div>
+</body>
+</html>
